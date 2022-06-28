@@ -34,6 +34,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         menuCompras = new javax.swing.JMenu();
         submenuCompra = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
+        submenuListaClientes = new javax.swing.JMenuItem();
+        submenuListaFornecedores = new javax.swing.JMenuItem();
+        submenuListaProdutos = new javax.swing.JMenuItem();
+        submenuRelatCompras = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         submenuSair = new javax.swing.JMenuItem();
 
@@ -119,6 +123,39 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(menuCompras);
 
         menuRelatorios.setText("Relatórios");
+
+        submenuListaClientes.setText("Lista de Clientes");
+        submenuListaClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submenuListaClientesActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(submenuListaClientes);
+
+        submenuListaFornecedores.setText("Lista de Fornecedores");
+        submenuListaFornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submenuListaFornecedoresActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(submenuListaFornecedores);
+
+        submenuListaProdutos.setText("Lista de Produtos");
+        submenuListaProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submenuListaProdutosActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(submenuListaProdutos);
+
+        submenuRelatCompras.setText("Relatório de Compras");
+        submenuRelatCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submenuRelatComprasActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(submenuRelatCompras);
+
         jMenuBar1.add(menuRelatorios);
 
         menuAjuda.setText("Ajuda");
@@ -193,6 +230,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         ifrUsuarios.setVisible(true);
     }//GEN-LAST:event_submenuUsuariosActionPerformed
 
+    private void submenuListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submenuListaClientesActionPerformed
+
+    private void submenuListaFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaFornecedoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submenuListaFornecedoresActionPerformed
+
+    private void submenuListaProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaProdutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submenuListaProdutosActionPerformed
+
+    private void submenuRelatComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuRelatComprasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submenuRelatComprasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -240,8 +293,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem submenuCompra;
     private javax.swing.JMenuItem submenuEnderecos;
     private javax.swing.JMenuItem submenuFornecedores;
+    private javax.swing.JMenuItem submenuListaClientes;
+    private javax.swing.JMenuItem submenuListaFornecedores;
+    private javax.swing.JMenuItem submenuListaProdutos;
     private javax.swing.JMenuItem submenuPedido;
     private javax.swing.JMenuItem submenuProdutos;
+    private javax.swing.JMenuItem submenuRelatCompras;
     private javax.swing.JMenuItem submenuSair;
     private javax.swing.JMenuItem submenuUsuarios;
     // End of variables declaration//GEN-END:variables
