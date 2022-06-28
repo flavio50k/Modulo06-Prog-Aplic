@@ -1,8 +1,17 @@
-
 /**
  * @author Flavio
  */
 package tela;
+
+import apoio.ConexaoBD;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class FrmPrincipal extends javax.swing.JFrame {
 
@@ -231,7 +240,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_submenuUsuariosActionPerformed
 
     private void submenuListaClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaClientesActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Compila o relatorio
+            JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/Lista_Clientes.jrxml"));
+
+            // Mapeia campos de parametros para o relatorio, mesmo que nao existam
+            Map parametros = new HashMap();
+
+            // Executa relatoio
+            JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
+
+            // Exibe resultado em video
+            JasperViewer.viewReport(impressao, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e);
+        }
     }//GEN-LAST:event_submenuListaClientesActionPerformed
 
     private void submenuListaFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaFornecedoresActionPerformed
