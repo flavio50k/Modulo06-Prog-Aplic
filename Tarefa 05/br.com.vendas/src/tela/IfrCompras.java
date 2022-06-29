@@ -117,23 +117,15 @@ public class IfrCompras extends javax.swing.JInternalFrame implements IItemPesqu
 
         tblConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Código", "Descrição", "Quantidade", "Valor"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         scrollConsulta.setViewportView(tblConsulta);
 
         btnNovo.setText("Novo");
@@ -295,7 +287,7 @@ public class IfrCompras extends javax.swing.JInternalFrame implements IItemPesqu
 
                     new Itens_ComprasDAO().popularTabela(tblConsulta, "", idCompra);
                     Double calculo = itens_Compras.getValor() * itens_Compras.getQtde();
-                    total = total + calculo;
+                    total += calculo;
                     tfdTotal.setText(String.valueOf(total));
 
                     Double qtdeEstoque = new ProdutosDAO().consultarQtde(Integer.parseInt(tfdItemID.getText()));
@@ -325,7 +317,7 @@ public class IfrCompras extends javax.swing.JInternalFrame implements IItemPesqu
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         Compras compras = new Compras();
 
-        compras.setData(tffData.getText());
+        compras.setData(tffData.getText().replace("/", "-"));
         compras.setFornecedor_id(Integer.parseInt(tfdFornecedorID.getText()));
 
         String retorno = new ComprasDAO().salvar(compras);
@@ -363,7 +355,7 @@ public class IfrCompras extends javax.swing.JInternalFrame implements IItemPesqu
                 double qtde = Double.parseDouble(String.valueOf(tblConsulta.getValueAt(tblConsulta.getSelectedRow(), 3)));
                 double valor = Double.parseDouble(String.valueOf(tblConsulta.getValueAt(tblConsulta.getSelectedRow(), 4)));
                 double calculo = qtde * valor;
-                total = total - calculo;
+                total -= calculo;
               
                 tfdTotal.setText(String.valueOf(total));
 

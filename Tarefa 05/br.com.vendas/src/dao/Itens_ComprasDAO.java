@@ -26,7 +26,7 @@ public class Itens_ComprasDAO implements IDAOT<Itens_Compras> {
                     + "" + o.getCompra_id() + ", "
                     + "" + o.getProduto_id() + ", "
                     + "" + o.getQtde() + ", "
-                    + "" + o.getValor() + ")";
+                    + "" + o.getValor() * o.getQtde() + ")";
 
             System.out.println("SQL: " + sql);
             int retorno = st.executeUpdate(sql);
@@ -82,12 +82,13 @@ public class Itens_ComprasDAO implements IDAOT<Itens_Compras> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[5];
+        Object[] cabecalho = new Object[6];
         cabecalho[0] = "ID";
         cabecalho[1] = "Cód. Item";
         cabecalho[2] = "Descrição";
         cabecalho[3] = "Quantidade";
-        cabecalho[4] = "Valor";
+        cabecalho[4] = "Valor Unit.";
+        cabecalho[5] = "Valor Total";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
@@ -100,7 +101,7 @@ public class Itens_ComprasDAO implements IDAOT<Itens_Compras> {
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][5];
+            dadosTabela = new Object[resultadoQ.getInt(1)][6];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar registros: " + e);
@@ -111,7 +112,7 @@ public class Itens_ComprasDAO implements IDAOT<Itens_Compras> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT ic.id as id, ic.produto_id as produto_id, p.descricao as descricao, ic.qtde as qtde, ic.valor as valor "
+                    + "SELECT ic.id as id, ic.produto_id as produto_id, p.descricao as descricao, ic.qtde as qtde, p.valor_unitario as valor_unit, ic.valor as valor_total "
                     + "FROM produto p, item_compra ic\n "
                     + "WHERE\n "
                     + "ic.produto_id = p.id and\n "
@@ -123,7 +124,8 @@ public class Itens_ComprasDAO implements IDAOT<Itens_Compras> {
                 dadosTabela[lin][1] = resultadoQ.getInt("produto_id");
                 dadosTabela[lin][2] = resultadoQ.getString("descricao");
                 dadosTabela[lin][3] = resultadoQ.getString("qtde");
-                dadosTabela[lin][4] = resultadoQ.getString("valor");
+                dadosTabela[lin][4] = resultadoQ.getString("valor_unit");
+                dadosTabela[lin][5] = resultadoQ.getString("valor_total");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
@@ -175,10 +177,19 @@ public class Itens_ComprasDAO implements IDAOT<Itens_Compras> {
                     column.setPreferredWidth(5);
                     break;
                 case 1:
-                    column.setPreferredWidth(140);
+                    column.setPreferredWidth(5);
                     break;
                 case 2:
-                    column.setPreferredWidth(60);
+                    column.setPreferredWidth(140);
+                    break;
+                case 3:
+                    column.setPreferredWidth(30);
+                    break;
+                case 4:
+                    column.setPreferredWidth(30);
+                    break;
+                case 5:
+                    column.setPreferredWidth(30);
                     break;
             }
         }

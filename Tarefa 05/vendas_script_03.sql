@@ -157,3 +157,5 @@ INSERT INTO endereco VALUES (DEFAULT, 'Joao da Silva. 465', '95.900-657');
 INSERT INTO endereco VALUES (DEFAULT, 'Travessa Cortes, 25', '95.900-352');
 INSERT INTO endereco VALUES (DEFAULT, 'Ambrosio Souza, 426', '95.900-965');
 
+ALTER TABLE compra ALTER COLUMN data TYPE timestamp with time zone USING data::timestamp with time zone;
+
