@@ -258,7 +258,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_submenuListaClientesActionPerformed
 
     private void submenuListaFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaFornecedoresActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Compila o relatorio
+            JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/ListaFornecedores.jrxml"));
+
+            // Mapeia campos de parametros para o relatorio, mesmo que nao existam
+            Map parametros = new HashMap();
+
+            // Executa relatoio
+            JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
+
+            // Exibe resultado em video
+            JasperViewer.viewReport(impressao, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e);
+        }
     }//GEN-LAST:event_submenuListaFornecedoresActionPerformed
 
     private void submenuListaProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaProdutosActionPerformed
