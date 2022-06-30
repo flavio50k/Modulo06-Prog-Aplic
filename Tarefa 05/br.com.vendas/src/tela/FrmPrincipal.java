@@ -45,8 +45,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         menuRelatorios = new javax.swing.JMenu();
         submenuListaClientes = new javax.swing.JMenuItem();
         submenuListaFornecedores = new javax.swing.JMenuItem();
-        submenuListaProdutos = new javax.swing.JMenuItem();
-        submenuRelatCompras = new javax.swing.JMenuItem();
+        submenuRelatComprasFornec = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         submenuSair = new javax.swing.JMenuItem();
 
@@ -149,21 +148,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         menuRelatorios.add(submenuListaFornecedores);
 
-        submenuListaProdutos.setText("Lista de Produtos");
-        submenuListaProdutos.addActionListener(new java.awt.event.ActionListener() {
+        submenuRelatComprasFornec.setText("Compras por Fornecedor");
+        submenuRelatComprasFornec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submenuListaProdutosActionPerformed(evt);
+                submenuRelatComprasFornecActionPerformed(evt);
             }
         });
-        menuRelatorios.add(submenuListaProdutos);
-
-        submenuRelatCompras.setText("Relatório de Compras");
-        submenuRelatCompras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submenuRelatComprasActionPerformed(evt);
-            }
-        });
-        menuRelatorios.add(submenuRelatCompras);
+        menuRelatorios.add(submenuRelatComprasFornec);
 
         jMenuBar1.add(menuRelatorios);
 
@@ -275,13 +266,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_submenuListaFornecedoresActionPerformed
 
-    private void submenuListaProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuListaProdutosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submenuListaProdutosActionPerformed
-
-    private void submenuRelatComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuRelatComprasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submenuRelatComprasActionPerformed
+    private void submenuRelatComprasFornecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submenuRelatComprasFornecActionPerformed
+        DlgRelCompras dlgRelCompras = new DlgRelCompras(this, true);
+        dlgRelCompras.setVisible(true);
+    }//GEN-LAST:event_submenuRelatComprasFornecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,10 +320,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem submenuFornecedores;
     private javax.swing.JMenuItem submenuListaClientes;
     private javax.swing.JMenuItem submenuListaFornecedores;
-    private javax.swing.JMenuItem submenuListaProdutos;
     private javax.swing.JMenuItem submenuPedido;
     private javax.swing.JMenuItem submenuProdutos;
-    private javax.swing.JMenuItem submenuRelatCompras;
+    private javax.swing.JMenuItem submenuRelatComprasFornec;
     private javax.swing.JMenuItem submenuSair;
     private javax.swing.JMenuItem submenuUsuarios;
     // End of variables declaration//GEN-END:variables

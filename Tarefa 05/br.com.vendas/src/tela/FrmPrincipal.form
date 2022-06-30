@@ -102,20 +102,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submenuListaFornecedoresActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="submenuListaProdutos">
+            <MenuItem class="javax.swing.JMenuItem" name="submenuRelatComprasFornec">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista de Produtos"/>
+                <Property name="text" type="java.lang.String" value="Compras por Fornecedor"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submenuListaProdutosActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="submenuRelatCompras">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Compras"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submenuRelatComprasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submenuRelatComprasFornecActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
