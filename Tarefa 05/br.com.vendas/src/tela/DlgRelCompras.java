@@ -5,6 +5,9 @@ package tela;
 
 import apoio.ConexaoBD;
 import apoio.Formatacao;
+import apoio.Validacao;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -22,6 +25,7 @@ public class DlgRelCompras extends javax.swing.JDialog {
     public DlgRelCompras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(this);
 
         Formatacao.formatarData(tffDataInicio);
         Formatacao.formatarData(tffDataFim);
@@ -146,23 +150,38 @@ public class DlgRelCompras extends javax.swing.JDialog {
 
     private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
         this.dispose();
+        if (Validacao.validarDataFormatada(tffDataInicio.getText()) && Validacao.validarDataFormatada(tffDataFim.getText())) {
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date d1 = format.parse(tffDataInicio.getText());
+                Date d2 = format.parse(tffDataFim.getText());
 
-        try {
-            // Compila o relatorio
-            JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/RelComprasPorFornecedor.jrxml"));
+                if (d1.compareTo(d2) < 0 || d1.compareTo(d2) == 0) {
+                    try {
+                        // Compila o relatorio
+                        JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/RelComprasPorFornecedor.jrxml"));
 
-            // Mapeia campos de parametros para o relatorio, mesmo que nao existam
-            Map parametros = new HashMap();
-            parametros.put("dataInicio", tffDataInicio.getText());
-            parametros.put("dataFim", tffDataFim.getText());
+                        // Mapeia campos de parametros para o relatorio, mesmo que nao existam
+                        Map parametros = new HashMap();
+                        parametros.put("dataInicio", tffDataInicio.getText());
+                        parametros.put("dataFim", tffDataFim.getText());
 
-            // Executa relatoio
-            JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
+                        // Executa relatoio
+                        JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
 
-            // Exibe resultado em video
-            JasperViewer.viewReport(impressao, false);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e);
+                        // Exibe resultado em video
+                        JasperViewer.viewReport(impressao, false);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "A data inicial é maior que a data final!");
+                }
+            } catch (java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Data inválida. Favor verificar!");
         }
     }//GEN-LAST:event_btnGerarActionPerformed
 
