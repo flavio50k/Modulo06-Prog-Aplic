@@ -149,7 +149,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         menuRelatorios.add(submenuListaFornecedores);
 
-        submenuRelComprasFornec.setText("Compras por Fornecedor");
+        submenuRelComprasFornec.setText("Rel. Compras por Fornecedor");
         submenuRelComprasFornec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submenuRelComprasFornecActionPerformed(evt);
@@ -157,7 +157,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         menuRelatorios.add(submenuRelComprasFornec);
 
-        submenuRelUsuarios.setText("Usuários");
+        submenuRelUsuarios.setText("Rel. de Usuários");
         submenuRelUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submenuRelUsuariosActionPerformed(evt);

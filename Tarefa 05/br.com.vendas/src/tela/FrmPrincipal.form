@@ -104,7 +104,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="submenuRelComprasFornec">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Compras por Fornecedor"/>
+                <Property name="text" type="java.lang.String" value="Rel. Compras por Fornecedor"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submenuRelComprasFornecActionPerformed"/>
@@ -112,7 +112,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="submenuRelUsuarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+                <Property name="text" type="java.lang.String" value="Rel. de Usu&#xe1;rios"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submenuRelUsuariosActionPerformed"/>
